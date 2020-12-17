@@ -19,15 +19,10 @@ stages:
 - stage: PublishContainer
   displayName: 'Publish Docker CI Container'
   jobs:
-  - job: 'Docker'
-    condition: eq(variables['specificTag'], '')
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - template: ../jobs/docker-build-push.yml
-      parameters: 
-        version: "Stu3"
-        tag: $(imageTag)
+  - template: ../jobs/docker-build-push.yml
+    parameters: 
+      version: "Stu3"
+      tag: $(imageTag)
 
 - stage: AKSDeploy
   displayName: Deploy to AKS
