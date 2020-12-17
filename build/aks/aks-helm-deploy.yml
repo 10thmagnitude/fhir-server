@@ -24,7 +24,7 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-    - template: jobs/docker-build-push.yml
+    - template: ../jobs/docker-build-push.yml
       parameters: 
         version: "Stu3"
         tag: $(imageTag)
@@ -32,7 +32,7 @@ stages:
 - stage: AKSDeploy
   displayName: Deploy to AKS
   jobs:
-  - template: jobs/helm-deploy.yml
+  - template: ../jobs/helm-deploy.yml
     parameters:
       name: deploy_fhir
       displayName: Deploy FHIR
