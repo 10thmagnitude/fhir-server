@@ -1,0 +1,4 @@
+variables:
+  SQLServerName: 'cddicom'
+  SQLUsername: 'dicom'
+  SQLDbName: fhir
