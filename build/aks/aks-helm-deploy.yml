@@ -41,7 +41,7 @@ stages:
       - task: AzureCLI@2
         displayName: Get connection strings
         inputs:
-          azureSubscription: $(azureSubscriptionName)
+          azureSubscription: $(azureSubscriptionEndpoint)
           scriptType: bash
           scriptLocation: inlineScript
           failOnStandardError: true
