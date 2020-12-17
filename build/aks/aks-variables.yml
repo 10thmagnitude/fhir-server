@@ -2,3 +2,7 @@ variables:
   SQLServerName: 'cddicom'
   SQLUsername: 'dicom'
   SQLDbName: fhir
+  azureSubscriptionEndpoint: 'docker-build'
+  azureContainerRegistryName: 'cddicom'
+  azureContainerRegistry: '$(azureContainerRegistryName).azurecr.io'
+  composeLocation: 'build/docker/docker-compose.yaml'
