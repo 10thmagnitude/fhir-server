@@ -76,7 +76,7 @@ spec:
             - name: DataStore
               value: "SqlServer"
             - name: SqlServer__AllowDatabaseCreation
-              value: {{ empty .Values.database.sql.existing | ternary "true" "false" }}
+              value: {{ empty .Values.database.sql.existing | ternary "true" "false" | quote }}
             - name: SqlServer__Initialize
               value: "true"
             - name: SqlServer__SchemaOptions__AutomaticUpdatesEnabled
