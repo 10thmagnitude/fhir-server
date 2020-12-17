@@ -44,6 +44,11 @@ database:
   resourceGroup: ""
   location: ""
   sql:
+    existing: {}
+      # databaseName: ""
+      # serverName: ""
+      # username: ""
+      # password: ""
     # 0: Basic
     # 1: Business
     # 2: BusinessCritical

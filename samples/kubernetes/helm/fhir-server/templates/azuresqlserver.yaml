@@ -1,4 +1,4 @@
-{{- if eq .Values.database.dataStore "SqlServer" }}
+{{- if eq .Values.database.dataStore "SqlServer" }}{{- if empty .Values.database.sql.existing }}
 {{- $fullName := include "fhir-server.fullname" . -}}
 apiVersion: azure.microsoft.com/v1beta1
 kind: AzureSqlServer
@@ -9,4 +9,4 @@ metadata:
 spec:
   location: {{ .Values.database.location }}
   resourceGroup: {{ .Values.database.resourceGroup }}
-{{- end }}
+{{- end }}{{- end }}
