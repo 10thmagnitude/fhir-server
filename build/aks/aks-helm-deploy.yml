@@ -35,20 +35,5 @@ stages:
       logicalEnvironment: DEV
       chartPath: 'samples/kubernetes/helm/fhir-server'
       releaseName: 'fhir'
-      overrideValues: 'image.tag=$(imageTag),database.sql.existing.serverName=tcp:$(SQLServerName).database.windows.net,database.sql.existing.databaseName=$(SQLDbName);database.sql.existing.username=$(SQLUsername);database.sql.existing.password=$(SQLServerPassword)'
+      overrideValues: 'image.tag=$(imageTag),database.sql.existing.serverName=tcp:$(SQLServerName).database.windows.net,database.sql.existing.databaseName=$(SQLDbName),database.sql.existing.username=$(SQLUsername),database.sql.existing.password=$(SQLServerPassword)'
       valueFile: 'build/aks/values.yml'
-      preDeploySteps:
-      - task: AzureCLI@2
-        displayName: Get connection strings
-        inputs:
-          azureSubscription: $(azureSubscriptionEndpoint)
-          scriptType: bash
-          scriptLocation: inlineScript
-          failOnStandardError: true
-          inlineScript: |
-            export sqlConStr="Server=tcp:$(SQLServerName).database.windows.net,1433;Database=$(SQLDbName);User ID=$(SQLUsername);Password=$(SQLServerPassword);Encrypt=true;Connection Timeout=30;"
-            export blobConStr="$(az storage account show-connection-string -g cd-dicom -n cddicom --query "connectionString" -o tsv)"
-
-            # replace , with \, for helm --set
-            echo "##vso[task.setvariable variable=SqlConnectionString]${sqlConStr//[,]/\\,}"
-            echo "##vso[task.setvariable variable=BlobConnectionString]${blobConStr//[,]/\\,}"
