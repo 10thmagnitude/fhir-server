@@ -2,9 +2,6 @@ image:
   registry: cddicom.azurecr.io
   repository: stu3_fhir-server
 
-service:
-  type: LoadBalancer
-  
 ingress:
   enabled: true
   annotations:
