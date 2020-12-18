@@ -35,5 +35,5 @@ stages:
       logicalEnvironment: DEV
       chartPath: 'samples/kubernetes/helm/fhir-server'
       releaseName: 'fhir'
-      overrideValues: 'image.tag=$(imageTag),database.sql.existing.serverName=tcp:$(SQLServerName).database.windows.net,database.sql.existing.databaseName=$(SQLDbName),database.sql.existing.username=$(SQLUsername),database.sql.existing.password=$(SQLServerPassword)'
+      overrideValues: 'image.tag=$(imageTag),database.sql.existing.serverName=tcp:$(SQLServerName).database.windows.net\,1433,database.sql.existing.databaseName=$(SQLDbName),database.sql.existing.username=$(SQLUsername),database.sql.existing.password=$(SQLServerPassword)'
       valueFile: 'build/aks/values.yml'
