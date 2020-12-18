@@ -19,3 +19,5 @@ database:
       serverName: "tcp:server,1433"
       username: "fhir"
       password: "Somelongpassword1"
+    schema:
+      automaticUpdatesEnabled: true
